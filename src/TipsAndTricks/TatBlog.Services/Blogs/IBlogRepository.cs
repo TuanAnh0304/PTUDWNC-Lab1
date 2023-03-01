@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TatBlog.Core.Contracts;
 using TatBlog.Core.Entities;
 
 namespace TatBlog.Services.Blogs
@@ -21,6 +22,12 @@ namespace TatBlog.Services.Blogs
 
         Task IncreaseViewCountAsync(
             int postId,
+            CancellationToken cancellationToken = default);
+
+        Task<IList<Category>> GetCategoriesAsync(
+            bool showOnMenu = false, CancellationToken cancellationToken = default);
+        Task<IPagedList<TagItem>> GetPagedTagAsync(
+            IPagingParams pagingParams,
             CancellationToken cancellationToken = default);
     }
 }
